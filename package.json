@@ -11,7 +11,8 @@
     "url": "https://github.com/kinglion/generatoer-ppsite.git"
   },
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "ppsite"
   ],
   "author": "lion",
   "license": "ISC",
