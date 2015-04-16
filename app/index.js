@@ -4,7 +4,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 
-var BigGulpGenerator = yeoman.generators.Base.extend({
+var PpGenerator = yeoman.generators.Base.extend({
   initializing: function () {
     this.pkg = require('../package.json');
   },
@@ -74,7 +74,6 @@ var BigGulpGenerator = yeoman.generators.Base.extend({
       this.copy('_package.json', 'package.json');
       this.copy('_bower.json', 'bower.json');
       this.copy('_base.scss', 'scss/base.scss');
-      this.copy('_base.css', 'css/base.css');
       this.copy('_index.html', 'index.html');
     },
 
@@ -88,4 +87,4 @@ var BigGulpGenerator = yeoman.generators.Base.extend({
   }
 });
 
-module.exports = BigGulpGenerator;
+module.exports = PpGenerator;
