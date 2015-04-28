@@ -1,6 +1,6 @@
 {
   "name": "generator-ppsite",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "a scaffoloding tool for built ppsite of generator-yeoman",
   "main": "app/index.js",
   "scripts": {

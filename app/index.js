@@ -72,7 +72,6 @@ var PpGenerator = yeoman.generators.Base.extend({
   writing: {
     app: function () {
       this.copy('_package.json', 'package.json');
-      this.copy('_bower.json', 'bower.json');
       this.copy('_base.scss', 'scss/base.scss');
       this.copy('_index.html', 'index.html');
     },
