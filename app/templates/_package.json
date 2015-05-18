@@ -1,5 +1,33 @@
 {
   "name": "package",
   "version": "0.0.0",
-  "dependencies": {}
+  "dependencies": {
+  	'gulp',
+    'gulp-autoprefixer',
+	'gulp-concat',
+	'gulp-csslint',
+	'gulp-jshint',
+	'gulp-minify-css',
+	'gulp-rename',
+	'gulp-sass',
+	'gulp-uglify',
+	'gulp-size',
+	'gulp-rev',
+	'gulp-cached',
+	'gulp-htmlincluder',
+	'gulp-livereload',
+	'gulp-plumber',
+	'gulp-rimraf',
+	'http',
+	'st',
+	'gulp-imagemin',
+	'imagemin-optipng',
+	'gulp.spritesmith',
+	'gulp-usemin',
+	'gulp-minify-html',
+	'gulp-rev',
+	'gulp-compass',
+	'gulp-size',
+	'shelljs'
+  }
 }

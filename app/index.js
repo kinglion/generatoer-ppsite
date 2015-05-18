@@ -45,19 +45,39 @@ var PpGenerator = yeoman.generators.Base.extend({
           'gulp-rename',
           'gulp-sass',
           'gulp-uglify',
-          'gulp-size'
+          'gulp-size',
+          'gulp-rev',
+          'gulp-cached',
+          'gulp-htmlincluder',
+          'gulp-livereload',
+          'gulp-plumber',
+          'gulp-rimraf',
+          'http',
+          'st',
+          'gulp-imagemin',
+          'imagemin-optipng',
+          'gulp.spritesmith',
+          'gulp-usemin',
+          'gulp-minify-html',
+          'gulp-rev',
+          'gulp-compass',
+          'gulp-size',
+          'shelljs'
         ], { 'saveDev': true }, installDone);
       }
 
       if (this.createFolders) {
         this.mkdir('scss');
+        this.mkdir('scss/extends');
         this.mkdir('js');
         this.mkdir('css');
         this.mkdir('dist');
         this.mkdir('dist/css');
         this.mkdir('dist/js');
 
+
         this.copy('.gitkeep', 'scss/.gitkeep');
+        this.copy('.gitkeep','scss/extends/.gitkeep');
         this.copy('.gitkeep', 'css/.gitkeep');
         this.copy('.gitkeep', 'js/.gitkeep');
         this.copy('.gitkeep', 'dist/css/.gitkeep');
@@ -72,12 +92,13 @@ var PpGenerator = yeoman.generators.Base.extend({
   writing: {
     app: function () {
       this.copy('_package.json', 'package.json');
-      this.copy('_base.scss', 'scss/base.scss');
+      this.copy('_base.scss', 'scss/extends/base.scss');
+      this.copy('_config.rb', 'comfig.rb');
       this.copy('_index.html', 'index.html');
     },
 
     projectfiles: function () {
-      this.copy('gulpfile.js', 'gulpfile.js');
+      this.copy('_gulpfile.js', 'gulpfile.js');
     }
   },
 

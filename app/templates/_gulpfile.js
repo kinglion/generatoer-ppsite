@@ -16,8 +16,12 @@ var gulp    = require('gulp'),
     imagemin = require('gulp-imagemin'),
     optipng = require('imagemin-optipng'),
     spritesmith = require('gulp.spritesmith'),
+    usemin = require('gulp-usemin'),
+    minifyHtml = require('gulp-minify-html'),
+    rev = require('gulp-rev'),
     compass = require('gulp-compass'),
-    size    = require('gulp-size');
+    size    = require('gulp-size'),
+    shelljs = require('shelljs');
 
 
 /**
@@ -116,6 +120,24 @@ gulp.task('sprite', function () {
     .pipe(gulp.dest('scss/sprite/'));
 });
 
+gulp.task('clean',function(){
+  return gulp.src('dist/js/**/*.js', { read: false }) // much faster 
+    .pipe(rimraf());
+});
+
+gulp.task('jsx',function(){
+  shelljs.exec("jsx js/jsx js");
+}); 
+
+gulp.task('usemin',['jsx','clean'], function () {
+  return gulp.src('./*.html')
+      .pipe(usemin({
+        //html: [minifyHtml({empty: true})],
+        js: [obfuscate({ replaceMethod: obfuscate.ZALGO }), rev()]
+      }))
+      .pipe(gulp.dest('dist/'));
+});
+
 gulp.task('watch',['server'], function() {
   livereload.listen();
   //gulp.watch('scss/*.scss', ['scss', 'csslint']);
@@ -126,6 +148,8 @@ gulp.task('watch',['server'], function() {
   gulp.watch('js/*.js',['jshint']);
 });
 
+
+
 gulp.task('server', function(done) {
   http.createServer(
     st({ path: __dirname, index: 'index.html', cache: false })
@@ -134,3 +158,11 @@ gulp.task('server', function(done) {
 
 gulp.task('default', ['watch']);
 gulp.task('build', ['scss', 'csslint', 'js', 'jshint', 'watch']);
+
+
+gulp.task('buildZepto', function() {
+  shelljs.cd("bower_components/zepto");
+  shelljs.env["MODULES"] = "zepto event ajax detect callbacks deferred touch";
+  shelljs.exec("npm install");
+  shelljs.exec("npm run-script dist");
+});
