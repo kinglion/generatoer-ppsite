@@ -96,10 +96,12 @@ gulp.task('compass', function() {
 });*/
 
 gulp.task('jshint', function() {
-  gulp.src('dist/js/j.js')
+  return gulp.src('js/**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
+
+gulp.task('')
 
 /**
  * 合并雪碧图
@@ -129,10 +131,10 @@ gulp.task('jsx',function(){
   shelljs.exec("jsx js/jsx js");
 }); 
 
-gulp.task('usemin',['jsx','clean'], function () {
+gulp.task('usemin',['clean'], function () {
   return gulp.src('./*.html')
       .pipe(usemin({
-        //html: [minifyHtml({empty: true})],
+        html: [minifyHtml({empty: true})],
         js: [obfuscate({ replaceMethod: obfuscate.ZALGO }), rev()]
       }))
       .pipe(gulp.dest('dist/'));
@@ -143,7 +145,7 @@ gulp.task('watch',['server'], function() {
   //gulp.watch('scss/*.scss', ['scss', 'csslint']);
   //gulp.watch('js/*.js', ['jshint', 'js']);
   gulp.watch('images/sprite/*',['sprite']);
-  gulp.watch('templates/*.html',['html']);
+  gulp.watch('*.html',['html']);
   gulp.watch('scss/*.scss', ['compass']);
   gulp.watch('js/*.js',['jshint']);
 });

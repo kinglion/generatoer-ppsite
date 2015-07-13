@@ -13,13 +13,16 @@ npm install -g generator-ppsite
 ```javascript
 yo ppsite
 ```
+```javascript
+npm install
+```
 
 ##开发流程
 
 ###开发阶段
 
 ```javascript
-gulp watch
+gulp
 ```
 
 -sass编译处理
@@ -28,7 +31,7 @@ gulp watch
 -sass集成compass工具
 -html可以分模块化管理
 
-###发布阶段
+###发布阶段(该功能尚未开发)
 
 ```javascript
 gulp build
