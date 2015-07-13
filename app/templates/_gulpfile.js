@@ -101,8 +101,6 @@ gulp.task('jshint', function() {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('')
-
 /**
  * 合并雪碧图
  */
